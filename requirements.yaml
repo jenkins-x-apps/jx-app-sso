@@ -1,0 +1,8 @@
+---
+dependencies:
+- name: "dex"
+  repository: "http://chartmuseum.jenkins-x.io"
+  version: "2.13.9"
+- name: "sso-operator"
+  repository: "http://chartmuseum.jenkins-x.io"
+  version: "1.2.12"
