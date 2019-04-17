@@ -7,6 +7,27 @@
   "properties": {
     "domain": {
       "type": "string", "format": "hostname"
+    },
+    "connectors": {
+      "type": "object",
+      "properties": {
+        "github": {
+          "type": "object",
+          "properties": {
+            "config": {
+              "type": "object",
+              "properties": {
+                "clientID": {
+                  "type": "string", "format": "token-passthrough"
+                },
+                "clientSecret": {
+                  "type": "string", "format": "token-passthrough"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
