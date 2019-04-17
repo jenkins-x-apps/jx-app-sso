@@ -1,0 +1,9 @@
+dependencies:
+- name: dex
+  repository: http://chartmuseum.jenkins-x.io
+  version: 2.13.9
+- name: sso-operator
+  repository: http://chartmuseum.jenkins-x.io
+  version: 1.2.12
+digest: sha256:13a6ae42ce773fca21e05823876432c3af823daa95f513ba4c0342b3dd06550c
+generated: 2019-04-10T17:30:59.960281+01:00

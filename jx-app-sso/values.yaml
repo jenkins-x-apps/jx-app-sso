@@ -1,0 +1,14 @@
+dex:
+  certs:
+    grpc:
+      ca:
+        namespace: cert-manager
+
+  connectors:
+    github:
+      config:
+        orgs:
+        - jenkins-x # hardcoded but will change when apps can support querying users github orgs and present a list to pick from
+
+  dex:
+    grpcHost: dex
