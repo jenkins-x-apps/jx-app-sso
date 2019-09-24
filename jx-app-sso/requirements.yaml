@@ -2,7 +2,7 @@
 dependencies:
 - name: "dex"
   repository: "https://storage.googleapis.com/chartmuseum.jenkins-x.io"
-  version: "2.13.11"
+  version: "2.13.13"
 - name: "sso-operator"
   repository: "https://storage.googleapis.com/chartmuseum.jenkins-x.io"
   version: "1.2.33"

@@ -1,4 +1,3 @@
-
 {
   "$id": "https:/jenkins-x.io/tests/descriptionAndTitle.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -7,30 +6,119 @@
   "properties": {
     "dex": {
       "type": "object",
-      "domain": {
-        "type": "string", "format": "hostname"
+      "properties": {
+        "domain": {
+          "type": "string", "format": "hostname"
+        },
+        "enabledConnector": {
+          "type": "string",
+          "title": "How do you want to authenticate?",
+          "enum": [
+            "Google",
+            "GitHub"
+          ]
+        }
       },
-      "connectors": {
-        "type": "object",
-        "properties": {
-          "github": {
-            "type": "object",
+      "allOf": [
+        {
+          "if": {
             "properties": {
-              "config": {
+              "enabledConnector": {
+                "type": "string",
+                "const": "GitHub"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "connectors": {
                 "type": "object",
                 "properties": {
-                  "clientID": {
-                    "type": "string", "format": "token-passthrough"
-                  },
-                  "clientSecret": {
-                    "type": "string", "format": "token-passthrough"
+                  "github": {
+                    "type": "object",
+                    "properties": {
+                      "config": {
+                        "type": "object",
+                        "properties": {
+                          "clientID": {
+                            "type": "string",
+                            "format": "token-passthrough"
+                          },
+                          "clientSecret": {
+                            "type": "string",
+                            "format": "token-passthrough"
+                          },
+                          "type": {
+                            "type": "string",
+                            "const": "github"
+                          },
+                          "name": {
+                            "type": "string",
+                            "const": "GitHub"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "enabledConnector": {
+                "type": "string",
+                "const": "Google"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "connectors": {
+                "type": "object",
+                "properties": {
+                  "github": {
+                    "type": "object",
+                    "properties": {
+                      "config": {
+                        "type": "object",
+                        "properties": {
+                          "clientID": {
+                            "type": "string",
+                            "format": "token-passthrough"
+                          },
+                          "clientSecret": {
+                            "type": "string",
+                            "format": "token-passthrough"
+                          },
+                          "type": {
+                            "type": "string",
+                            "const": "oidc"
+                          },
+                          "id": {
+                            "type": "string",
+                            "const": "google"
+                          },
+                          "name": {
+                            "type": "string",
+                            "const": "Google"
+                          },
+                          "issuer": {
+                            "type": "string",
+                            "const": "https://accounts.google.com"
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
+      ]
     }
   }
 }
