@@ -1,0 +1,23 @@
+{{- if .Values.dex.connectors }}
+  {{- if .Values.dex.connectors.google }}
+apiVersion: jenkins.io/v1
+kind: EnvironmentRoleBinding
+metadata:
+    labels:
+        app: {{ .Chart.Name }}
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: "{{ .Release.Name }}"
+        heritage: "{{ .Release.Service }}"
+    name: committer-group
+    namespace: jx
+spec:
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: committer
+  subjects:
+    - kind: Group
+      name: "{{.Values.groups.committer}}"
+      namespace: jx
+  {{- end }}
+{{- end }}

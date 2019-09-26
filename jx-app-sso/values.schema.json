@@ -4,33 +4,34 @@
   "description": "Jenkins App values.yaml",
   "type": "object",
   "properties": {
-    "dex": {
-      "type": "object",
-      "properties": {
-        "domain": {
-          "type": "string", "format": "hostname"
-        },
-        "enabledConnector": {
-          "type": "string",
-          "title": "How do you want to authenticate?",
-          "enum": [
-            "Google",
-            "GitHub"
-          ]
+    "enabledConnector": {
+      "type": "string",
+      "title": "How do you want to authenticate?",
+      "enum": [
+        "Google",
+        "GitHub"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "enabledConnector": {
+            "type": "string",
+            "const": "GitHub"
+          }
         }
       },
-      "allOf": [
-        {
-          "if": {
+      "then": {
+        "properties": {
+          "dex": {
+            "type": "object",
             "properties": {
-              "enabledConnector": {
+              "domain": {
                 "type": "string",
-                "const": "GitHub"
-              }
-            }
-          },
-          "then": {
-            "properties": {
+                "format": "hostname"
+              },
               "connectors": {
                 "type": "object",
                 "properties": {
@@ -64,18 +65,27 @@
               }
             }
           }
-        },
-        {
-          "if": {
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "enabledConnector": {
+            "type": "string",
+            "const": "Google"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "dex": {
+            "type": "object",
             "properties": {
-              "enabledConnector": {
+              "domain": {
                 "type": "string",
-                "const": "Google"
-              }
-            }
-          },
-          "then": {
-            "properties": {
+                "format": "hostname"
+              },
               "connectors": {
                 "type": "object",
                 "properties": {
@@ -116,9 +126,32 @@
                 }
               }
             }
+          },
+          "groups": {
+            "type": "object",
+            "properties": {
+              "viewer": {
+                "type": "string",
+                "title": "Google Group for viewers",
+                "description": "If you are using Google Groups to manage user groups, then enter the group that should be bound to viewer role",
+                "format": "email"
+              },
+              "committer": {
+                "type": "string",
+                "title": "Google Group for committers",
+                "format": "email",
+                "description": "If you are using Google Groups to manage user groups, then enter the group that should be bound to committer role"
+              },
+              "owner": {
+                "type": "string",
+                "title": "Google Group for owners",
+                "format": "email",
+                "description": "If you are using Google Groups to manage user groups, then enter the group that should be bound to owner role"
+              }
+            }
           }
         }
-      ]
+      }
     }
-  }
+  ]
 }
