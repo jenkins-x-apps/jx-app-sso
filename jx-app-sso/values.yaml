@@ -5,3 +5,4 @@ dex:
         namespace: cert-manager
   dex:
     grpcHost: dex
+  connectors: {}
