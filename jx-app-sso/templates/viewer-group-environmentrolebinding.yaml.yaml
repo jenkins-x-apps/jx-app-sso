@@ -17,7 +17,7 @@ spec:
     name: viewer
   subjects:
     - kind: Group
-      name: "{{.Values.groups.viewer}}"
+      name: "{{ .Values.groups.viewer }}"
       namespace: jx
   {{- end }}
 {{- end }}
