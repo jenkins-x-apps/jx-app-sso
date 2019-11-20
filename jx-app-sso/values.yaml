@@ -6,3 +6,8 @@ dex:
   dex:
     grpcHost: dex
   connectors: {}
+
+groups:
+  viewer: viewer
+  owner: owner
+  committer: committer
