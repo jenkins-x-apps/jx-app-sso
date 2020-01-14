@@ -7,6 +7,10 @@ dex:
     grpcHost: dex
   connectors: {}
 
+sso-operator:
+  dex:
+    grpcHost: dex.jx
+
 groups:
   viewer: viewer
   owner: owner
