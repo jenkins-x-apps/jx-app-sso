@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: jenkins-x
+  repo: sso-operator
+  url: https://github.com/jenkins-x/sso-operator
+  version: 1.2.39
+  versionURL: ""
