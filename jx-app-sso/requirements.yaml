@@ -4,4 +4,4 @@ dependencies:
   version: 2.13.23
 - name: sso-operator
   repository: https://storage.googleapis.com/chartmuseum.jenkins-x.io
-  version: 1.2.44
+  version: 1.2.50
